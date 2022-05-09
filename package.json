@@ -4,5 +4,13 @@
   "description": "Blog",
   "main": "index.js",
   "author": "jack9603301 <jack9603301@163.com>",
-  "license": "NONE"
+  "license": "NONE",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.43",
+    "vuepress-theme-maker": "^1.2.1"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
 }
