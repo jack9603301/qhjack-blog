@@ -1,0 +1,8 @@
+{
+  "name": "qhjack-blog",
+  "version": "1.0.0",
+  "description": "Blog",
+  "main": "index.js",
+  "author": "jack9603301 <jack9603301@163.com>",
+  "license": "NONE"
+}
