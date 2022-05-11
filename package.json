@@ -1,16 +1,25 @@
 {
-  "name": "qhjack-blog",
+  "name": "demo-blog",
   "version": "1.0.0",
-  "description": "Blog",
+  "description": "aurora blog",
   "main": "index.js",
-  "author": "jack9603301 <jack9603301@163.com>",
-  "license": "NONE",
-  "devDependencies": {
-    "vuepress": "^2.0.0-beta.43",
-    "vuepress-theme-maker": "^1.2.1"
-  },
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "blog:dev": "vuepress dev blog",
+    "blog:build": "vuepress build blog"
+  },
+  "author": "qsyyke",
+  "license": "ISC",
+  "devDependencies": {
+    "@vuepress/plugin-search": "2.0.0-beta.33",
+    "vuepress": "2.0.0-beta.33",
+    "vuepress-webpack": "2.0.0-beta.33"
+  },
+  "dependencies": {
+    "vuepress-plugin-archive": "latest",
+    "vuepress-plugin-bubble": "latest",
+    "vuepress-plugin-coze": "1.8.0",
+    "vuepress-plugin-player": "latest",
+    "vuepress-theme-aurora": "1.13.3"
   }
 }
