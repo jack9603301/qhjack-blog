@@ -20,7 +20,6 @@ module.exports = {
     // 打开下面注释，将使用webpack作为打包工具，如果注释将使用vite作为打包工具[目前主题不能使用vite打包，会报错]
     bundler: '@vuepress/bundler-webpack',
     bundlerConfig: {
-
     },
 
     /*
@@ -28,6 +27,15 @@ module.exports = {
     * 插件plugins是一个数组，官方介绍: https://v2.vuepress.vuejs.org/zh/guide/plugin.html
     * */
     plugins: [
+        "vuepress-plugin-comment2",
+        {
+          type: "giscus",
+          repo: "jack9603301/qhjack-blog",
+          repoId: "R_kgDOHVZ-oQ",
+          category: "General",
+          categoryId: "DIC_kwDOHVZ-oc4CPGa5",
+          mapping: "pathname"
+        },
         "@vuepress/plugin-search",
         {
             locales: {
@@ -348,20 +356,6 @@ module.exports = {
 
         //赞赏信息
         donate: donate,
-
-        //评论配置 请自己查看文档配置 https://aurora.xcye.xyz/comment/
-        comment: {
-            //是否显示评论
-            showComment: true,
-            serverURL: 'https://aurora-local-7hrjb6mp8-qsyyke.vercel.app/',
-            emojis: [
-                'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/alus',
-                'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
-                'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba',
-                'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo'
-            ],
-            avatar: 'monsterid'
-        },
 
         //海报分享配置
         poster: {
