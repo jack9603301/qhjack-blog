@@ -1,0 +1,7 @@
+{% if theme.giteement.enable %}
+  <link rel="stylesheet" href="https://giteement.oss-cn-beijing.aliyuncs.com/default.css"/>
+{% endif %}
+{{ next_data('giteement', theme.giteement, {
+  id: date(page.date, 'YYYYMMDDHHmmss')
+}) }}
+{{ next_js('third-party/comments/giteement.js') }}

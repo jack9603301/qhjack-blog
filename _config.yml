@@ -5,6 +5,7 @@
 # Site
 title: 起航天空
 subtitle: ''
+author: 杰克
 description: '在茫茫之中，探索自然奥秘，在星星之源，绽放声明之花。起航天空，引领你的未来，配棒你的一生！'
 keywords: 起航, 起航天空, 探索, 博客, 生命
 language: zh-CN
@@ -43,14 +44,14 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
-  enable: false
+  enable: true
   preprocess: true
   line_number: true
   tab_replace: ''
@@ -109,3 +110,45 @@ search:
   field: post
   format: html
   limit: 10000
+
+markdown:
+  preset: "default"
+  render:
+    html: true
+    xhtmlOut: false
+    langPrefix: "lang-"
+    breaks: true
+    linkify: true
+    quotes: "“”"
+  enable_rules:
+  disable_rules:
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-cjk-breaks
+    - markdown-it-deflist
+    - markdown-it-emoji
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-mark
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-checkbox
+    - markdown-it-imsize
+    - markdown-it-expandable
+    - name: markdown-it-container
+      options: success
+    - name: markdown-it-container
+      options: tips
+    - name: markdown-it-container
+      options: warning
+    - name: markdown-it-container
+      options: danger
+  anchors:
+    level: 2
+    collisionSuffix: ""
+    permalink: false
+    permalinkClass: "header-anchor"
+    permalinkSide: "left"
+    permalinkSymbol: "¶"
+    case: 0
+    separator: "-"
