@@ -179,7 +179,7 @@ links_settings:
 
 links:
   #Title: https://example.com
-  XieBruce: https://www.xiebruce.top
+  "Bruce's Blog": https://www.xiebruce.top
 
 # Table of Contents in the Sidebar
 # Front-matter variable (nonsupport wrap expand_all).
