@@ -1,6 +1,5 @@
 ---
 title: 转入hexo，第一篇博客，部署
-date: 2022-05-17 20:16:55
 tags:
   - linux
   - hexo
@@ -8,6 +7,8 @@ tags:
 categories: hexo
 author: 杰克
 comments: true
+abbrlink: 26669
+date: 2022-05-17 20:16:55
 ---
 
 大家好，这是我的第一篇博客，从现在开始，我终于抛弃了Wordpress的旧博客，转入使用静态博客，在这里，我将解释hexo的部署

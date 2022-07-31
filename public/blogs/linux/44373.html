@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/blue/pace-theme-minimal.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qhjack.gitee.io","root":"/","images":"/images","scheme":"custom","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":{"utterances":{"order":-1}},"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="大家好，这篇文章，我们来分享一下，如何给Orangepi 3 LTS安装Gentoo 硬件配置 产品参数    CPU 全志 H6  四核 64 位 1.8GHz 高性能 Cortex-A53 处理器     GPU • High-performance multi-core GPU Mali T720• OpenGL ES3.1&#x2F;3.0&#x2F;2.0&#x2F;1.1• Microsoft DirectX 11">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给Orangepo 3 LTS安装gentoo">
+<meta property="og:url" content="https://qhjack.gitee.io/blogs/linux/44373.html">
+<meta property="og:site_name" content="起航天空">
+<meta property="og:description" content="大家好，这篇文章，我们来分享一下，如何给Orangepi 3 LTS安装Gentoo 硬件配置 产品参数    CPU 全志 H6  四核 64 位 1.8GHz 高性能 Cortex-A53 处理器     GPU • High-performance multi-core GPU Mali T720• OpenGL ES3.1&#x2F;3.0&#x2F;2.0&#x2F;1.1• Microsoft DirectX 11">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-31T08:23:00.000Z">
+<meta property="article:modified_time" content="2022-08-07T16:06:06.178Z">
+<meta property="article:author" content="杰克">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="gentoo">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://qhjack.gitee.io/blogs/linux/44373.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://qhjack.gitee.io/blogs/linux/44373.html","path":"blogs/linux/44373.html","title":"给Orangepo 3 LTS安装gentoo"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>给Orangepo 3 LTS安装gentoo | 起航天空</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">起航天空</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">硬件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E5%8F%82%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">产品参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%8F%AF%E5%BC%95%E5%AF%BC%E9%95%9C%E5%83%8F"><span class="nav-number">2.</span> <span class="nav-text">构建可引导镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">执行初始化设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91Gentoo-Linux%E4%B8%BB%E7%BA%BF%E5%86%85%E6%A0%B8"><span class="nav-number">4.</span> <span class="nav-text">编译Gentoo Linux主线内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAuInitrd"><span class="nav-number">5.</span> <span class="nav-text">构建uInitrd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E5%AE%8C%E6%88%90"><span class="nav-number">6.</span> <span class="nav-text">系统设置完成</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">杰克</p>
+  <div class="site-description" itemprop="description">在茫茫之中，探索自然奥秘，在星星之源，绽放声明之花。起航天空，引领你的未来，配棒你的一生！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jack9603301" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jack9603301" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiebruce.top/" title="https:&#x2F;&#x2F;www.xiebruce.top" rel="noopener" target="_blank">Bruce's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://qhjack.gitee.io/blogs/linux/44373.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="杰克">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="起航天空">
+      <meta itemprop="description" content="在茫茫之中，探索自然奥秘，在星星之源，绽放声明之花。起航天空，引领你的未来，配棒你的一生！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="给Orangepo 3 LTS安装gentoo | 起航天空">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          给Orangepo 3 LTS安装gentoo
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-31 16:23:00" itemprop="dateCreated datePublished" datetime="2022-07-31T16:23:00+08:00">2022-07-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-08 00:06:06" itemprop="dateModified" datetime="2022-08-08T00:06:06+08:00">2022-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>大家好，这篇文章，我们来分享一下，如何给Orangepi 3 LTS安装Gentoo</p>
+<h2 id="硬件配置">硬件配置</h2>
+<h3 id="产品参数">产品参数</h3>
+<table>
+<thead>
+<tr>
+<th>CPU</th>
+<th>全志 H6  <br>四核 64 位 1.8GHz 高性能 Cortex-A53 处理器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPU</td>
+<td>• High-performance multi-core GPU Mali T720<br><br>• OpenGL ES3.1/3.0/2.0/1.1<br><br>• Microsoft DirectX 11 FL9_3<br><br>• ASTC(Adaptive Scalable Texture Compression)<br><br>• Floating point operation greater than 70 GFLOPS</td>
+</tr>
+<tr>
+<td>电源管理芯片</td>
+<td>AXP805</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>2GB LPDDR3 (与 GPU 共享)</td>
+</tr>
+<tr>
+<td>板载存储</td>
+<td>• TF卡插槽 <br><br> • 8GB EMMC Flash</td>
+</tr>
+<tr>
+<td>板载以太网</td>
+<td>• YT8531C芯片<br><br> • 支持10/100M/1000M 以太网</td>
+</tr>
+<tr>
+<td>板载WIFI+蓝牙</td>
+<td>• AW859A芯片 <br><br> • 支持IEEE 802.11 a/b/g/n/ac <br><br> • 支持BT5.0</td>
+</tr>
+<tr>
+<td>视频输出</td>
+<td>• HDMI 2.0a <br><br> • TV CVBS Output</td>
+</tr>
+<tr>
+<td>音频输出</td>
+<td>• HDMI输出<br><br> • 3.5mm音频口</td>
+</tr>
+<tr>
+<td>电源</td>
+<td>5V3A Type-C供电</td>
+</tr>
+<tr>
+<td>USB 端口</td>
+<td>1 * USB 3.0 HOST、2 * USB 2.0 HOST</td>
+</tr>
+<tr>
+<td>Low-level 外设</td>
+<td>26pin 接头带有1<em>I2C、1</em>SPI、1*UART及多个GPIO口</td>
+</tr>
+<tr>
+<td>调试串口</td>
+<td>UART-TX、UART-RX以及GND</td>
+</tr>
+<tr>
+<td>按键</td>
+<td>电源按键(SW4)</td>
+</tr>
+<tr>
+<td>LED灯</td>
+<td>电源指示灯和状态指示灯</td>
+</tr>
+<tr>
+<td>红外接收</td>
+<td>支持红外遥控器</td>
+</tr>
+<tr>
+<td>支持的操作系统</td>
+<td>Android 9.0、Ubuntu、Debian等操作系统</td>
+</tr>
+</tbody>
+</table>
+<h2 id="构建可引导镜像">构建可引导镜像</h2>
+<ol>
+<li class="lvl-3">
+<p>单击<a target="_blank" rel="noopener" href="http://www.orangepi.cn/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-3-LTS.html">Orange Pi - Orangepi</a>下载官方镜像，本文选择debian。</p>
+</li>
+<li class="lvl-3">
+<p>执行如下指令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span><span class="token operator">&lt;</span>orange_img<span class="token operator">></span> <span class="token assign-left variable">of</span><span class="token operator">=</span>/dev/sdd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>执行此命令先烧录，然后执行如下命令挂载到系统：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> -o loop,offset<span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span><span class="token number">8192</span><span class="token operator">*</span><span class="token number">512</span><span class="token variable">))</span></span> ~/下载/Orangepi3-lts_3.0.0_debian_bullseye_server_linux5.16.17.img /mnt/opipc_image<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li class="lvl-3">
+<p>执行如下命令删除sd卡的所有文件（除了引导文件外）：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">rm</span> -rf *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li class="lvl-3">
+<p>执行如下指令拷贝rootfs：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">wget</span> https://bouncer.gentoo.org/fetch/root/all/releases/arm64/autobuilds/20220724T233143Z/stage3-arm64-openrc-20220724T233143Z.tar.xzhttps://bouncer.gentoo.org/fetch/root/all/releases/arm64/autobuilds/20220724T233143Z/stage3-arm64-openrc-20220724T233143Z.tar.xz
+<span class="token function">sudo</span> <span class="token function">wget</span> http://gentoo.aditsu.net:8000/snapshots/portage-latest.tar.xz
+<span class="token function">sudo</span> <span class="token function">tar</span> xpvf stage3-*.tar.xz --xattrs-include<span class="token operator">=</span><span class="token string">'*.*'</span> --numeric-owner
+<span class="token function">sudo</span> <span class="token function">tar</span> xpvf portage-latest.tar.xz --xattrs-include<span class="token operator">=</span><span class="token string">'*.*'</span> --numeric-owner -C /usr<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li class="lvl-3">
+<p>拷贝官方的引导文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">cp</span> -r /mnt/opipc_img/boot/* boot/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>编辑<code>boot.cmd</code>文件，内容如下：</p>
+<pre class="line-numbers language-uboot" data-language="uboot"><code class="language-uboot">   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ol>
+<p>并执行如下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> mkimage -C none -A arm64 -T script -d boot.cmd boot.scr<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="执行初始化设置">执行初始化设置</h2>
+<p>执行以下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ip</span> addr <span class="token function">add</span> <span class="token number">192.168</span>.3.200/24 dev eth0
+<span class="token function">ip</span> <span class="token function">link</span> <span class="token builtin class-name">set</span> eth0 up
+<span class="token function">ip</span> route <span class="token function">add</span> <span class="token number">0.0</span>.0.0/0 via <span class="token number">192.168</span>.3.1
+data -s <span class="token string">'&lt;data>'</span> <span class="token comment"># 设置日期</span>
+data -s <span class="token string">'&lt;time>'</span> <span class="token comment"># 设置时间</span>
+emerge-webrsync
+emerge --sync
+emerge @world --ask<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此后还需要编辑<code>inittab</code> 以便开启串口控制台的初始化程序。</p>
+<h2 id="编译Gentoo-Linux主线内核">编译Gentoo Linux主线内核</h2>
+<p>现在我们还只是使用官方的引导内核，现在我们将构建自己的内核，执行如下指令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">emerge --ask gentoo-sources
+emerge --ask dracut
+eselect kernel <span class="token builtin class-name">set</span> <span class="token number">1</span>
+<span class="token builtin class-name">cd</span> /usr/src/linux
+<span class="token function">cp</span> /boot/config .config
+<span class="token function">make</span> menuconfig
+<span class="token function">make</span>
+<span class="token function">make</span> modules_install
+<span class="token function">mv</span> /boot /boot.old
+<span class="token function">mkdir</span> /boot.new
+<span class="token comment"># 根据需要利用软链接切换，拷贝必要的引导文件（除了内核部分）</span>
+dracut --kver<span class="token operator">=</span><span class="token number">5.15</span>.52-gentoo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="构建uInitrd">构建uInitrd</h2>
+<p>从物理机执行如下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> mkimage -C none -A arm64 -T ramdisk -n uInitrd -d <span class="token operator">&lt;</span>img<span class="token operator">></span> uInitrd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>当你建立好正确的软链接关系后，重新启动，系统正常引导说明成功</p>
+<h2 id="系统设置完成">系统设置完成</h2>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>杰克
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://qhjack.gitee.io/blogs/linux/44373.html" title="给Orangepo 3 LTS安装gentoo">https://qhjack.gitee.io/blogs/linux/44373.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/gentoo/" rel="tag"># gentoo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blogs/uncategorized/18351.html" rel="prev" title="第五个测试">
+                  <i class="fa fa-chevron-left"></i> 第五个测试
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-utterances">utterances</a></li>
+            <li class="tab"><a href="#comment-giteement">giteement</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane giteement" id="comment-giteement">
+              <div class="comments giteement-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杰克</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/custom/" rel="noopener" target="_blank">NexT.custom</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/ribbon.js/dist/ribbon.min.js"></script>
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="/lib/jquery/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="/lib/lozad/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"/lib/pdfobject/pdfobject.min.js","integrity":"sha256-ph3Dk89VmuTVXG6x/RDzk53SU9LPdAh1tpv0UvnDZ2I="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-CemUs9ITT7liCZpVMktcEw0BpAOZ1+mujlMB3UyuImU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="/lib/quicklink/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://qhjack.gitee.io/blogs/linux/44373.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+  <link rel="stylesheet" href="https://giteement.oss-cn-beijing.aliyuncs.com/default.css"/>
+
+<script class="next-config" data-name="giteement" type="application/json">{"enable":true,"redirect_uri":"http://jack960330.gitee.io/qhjack-blog","oauth_uri":"https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token","giteeID":"jack960330","repo":"qhjack-blog","gitment_oauth":{"client_id":"3d52edb8108f510eec99a9562e0cef09828e90581baf0e7ff1ac30d92afbabac","client_secret":"236aec6fd09f286d168ec0f70df189a36a2b8d7a22e5a26b67fb63a1a2f076b7"},"id":"20220731162300"}</script>
+<script src="/js/third-party/comments/giteement.js"></script>
+
+
+  
+    
+      
+    
+  
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"jack9603301/qhjack-blog","issue_term":"pathname","theme":"github-light","overlay_comment_option":false,"label":"linux"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
