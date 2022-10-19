@@ -102,6 +102,7 @@ menu:
   archives: /archives/ || fa fa-archive
   #schedule: /schedule/ || fa fa-calendar
   sitemap: /sitemap.xml || fa fa-sitemap
+  devops: https://gitee.com/enterprises?invite_code=Z2l0ZWUtMzAxNzA2
   commonweal: /404/ || fa fa-heartbeat
 
 # Enable / Disable menu icons / item badges.
