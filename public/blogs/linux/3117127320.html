@@ -23,26 +23,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qhjack.gitee.io","root":"/","images":"/images","scheme":"custom","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":{"utterances":{"order":-1}},"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在茫茫之中，探索自然奥秘，在星星之源，绽放声明之花。起航天空，引领你的未来，配棒你的一生！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="起航天空">
-<meta property="og:url" content="https://qhjack.gitee.io/tags/blog/index.html">
+    <meta name="description" content="这是一次故障记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="故障：修复nvidia切换tty后提示重置">
+<meta property="og:url" content="https://qhjack.gitee.io/blogs/linux/3117127320.html">
 <meta property="og:site_name" content="起航天空">
-<meta property="og:description" content="在茫茫之中，探索自然奥秘，在星星之源，绽放声明之花。起航天空，引领你的未来，配棒你的一生！">
+<meta property="og:description" content="这是一次故障记录">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-01T05:34:21.000Z">
+<meta property="article:modified_time" content="2022-12-01T05:45:44.520Z">
 <meta property="article:author" content="杰克">
-<meta property="article:tag" content="起航, 起航天空, 探索, 博客, 生命">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="nvidia">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://qhjack.gitee.io/tags/blog/">
+<link rel="canonical" href="https://qhjack.gitee.io/blogs/linux/3117127320.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"tags/blog/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://qhjack.gitee.io/blogs/linux/3117127320.html","path":"blogs/linux/3117127320.html","title":"故障：修复nvidia切换tty后提示重置"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>标签: blog | 起航天空</title>
+<title>故障：修复nvidia切换tty后提示重置 | 起航天空</title>
   
 
 
@@ -131,7 +134,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -144,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">修改驱动参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">增加compat选项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -213,51 +217,172 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">blog
-          <small>标签</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://qhjack.gitee.io/blogs/linux/3117127320.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="杰克">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="起航天空">
+      <meta itemprop="description" content="在茫茫之中，探索自然奥秘，在星星之源，绽放声明之花。起航天空，引领你的未来，配棒你的一生！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="故障：修复nvidia切换tty后提示重置 | 起航天空">
+      <meta itemprop="description" content="这是一次故障记录">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          故障：修复nvidia切换tty后提示重置
         </h1>
-      </div>
 
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+      <time title="创建时间：2022-12-01 13:34:21 / 修改时间：13:45:44" itemprop="dateCreated datePublished" datetime="2022-12-01T13:34:21+08:00">2022-12-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">这是一次故障记录</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近我重新装了gentoo，处于需求我使用了N卡和nvidia专用驱动，发现当我们切换tty时，kwin会提示<strong>由于显卡重置，桌面效果已重启</strong>，其他的opengl程序也一定程度的发生了故障，甚至崩溃，处于完美主义，我决定尝试尽可能的修复这个问题（我也相信nvidia的驱动程序给出了一定的选择）。</p>
+<p>我搜索了很多资料，包括google，都未能找到有价值的线索，我甚至都认为这可能是一个很小的bug，目前没有很好的办法解决它。然而我看到了下面的链接：</p>
+<ol>
+<li class="lvl-3">
+<p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend">Preserve video memory after suspend</a></p>
+</li>
+<li class="lvl-3">
+<p><a target="_blank" rel="noopener" href="https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers/zh-cn#.E5.BD.93.E5.90.AF.E7.94.A8MSI.E4.B8.AD.E6.96.AD.EF.BC.8C.E9.A9.B1.E5.8A.A8.E7.A8.8B.E5.BA.8F.E5.88.9D.E5.A7.8B.E5.8C.96.E5.A4.B1.E8.B4.A5">当启用MSI中断，驱动程序初始化失败</a></p>
+</li>
+<li class="lvl-3">
+<p><a target="_blank" rel="noopener" href="https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers/zh-cn#Random_freezes">Random_freezes</a></p>
+</li>
+</ol>
+<p>于是我决定孤注一掷，进行如下尝试：</p>
+<h1>修改驱动参数</h1>
+<p>我按照第1. 2. 进行试验，修改<code>/etc/modprobe.d/nvidia.conf</code>文件：</p>
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">options nvidia \
+        NVreg_DeviceFileGID&#x3D;27 \
+        NVreg_DeviceFileMode&#x3D;432 \
+        NVreg_DeviceFileUID&#x3D;0 \
+        NVreg_ModifyDeviceFiles&#x3D;1 \
+        modeset&#x3D;1 \
+        NVreg_UsePageAttributeTable&#x3D;1 \
+        NVreg_RegistryDwords&#x3D;&quot;OverrideMaxPerf&#x3D;0x1&quot; \
+        NVreg_PreserveVideoMemoryAllocations&#x3D;1 \
+        NVreg_TemporaryFilePath&#x3D;&#x2F;tmp&#x2F;nvidia<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>增加compat选项</h1>
+<p>修改<code>/etc/portage/package.use/nvidia</code>:</p>
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">x11-drivers&#x2F;nvidia-drivers tools persistenced compat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1>总结</h1>
+<p>问题居然成功解决，虽然dmesg仍然存在由<code>nvidia-modeset</code>发出的警告，但kwin和其他渲染没有问题，我认为这是由于显卡挂起引起的</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-17T20:16:55+08:00"
-              content="2022-05-17">
-          05-17
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/blogs/hexo/26669.html" itemprop="url">
-            <span itemprop="name">转入hexo，第一篇博客，部署</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          
 
-      
-    </header>
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>杰克
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://qhjack.gitee.io/blogs/linux/3117127320.html" title="故障：修复nvidia切换tty后提示重置">https://qhjack.gitee.io/blogs/linux/3117127320.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本文章为原创文章，采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/nvidia/" rel="tag"># nvidia</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blogs/linux/3509176900.html" rel="prev" title="在gentoo安装和配置fish">
+                  <i class="fa fa-chevron-left"></i> 在gentoo安装和配置fish
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
 
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-utterances">utterances</a></li>
+            <li class="tab"><a href="#comment-giteement">giteement</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane giteement" id="comment-giteement">
+              <div class="comments giteement-container"></div>
+            </div>
+        </div>
+      </div>
 </div>
   </main>
 
@@ -335,18 +460,24 @@
 
 
   <script src="/lib/quicklink/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://qhjack.gitee.io/tags/blog/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://qhjack.gitee.io/blogs/linux/3117127320.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
   <link rel="stylesheet" href="https://giteement.oss-cn-beijing.aliyuncs.com/default.css"/>
 
-<script class="next-config" data-name="giteement" type="application/json">{"enable":true,"redirect_uri":"http://jack960330.gitee.io/qhjack-blog","oauth_uri":"https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token","giteeID":"jack960330","repo":"qhjack-blog","gitment_oauth":{"client_id":"3d52edb8108f510eec99a9562e0cef09828e90581baf0e7ff1ac30d92afbabac","client_secret":"236aec6fd09f286d168ec0f70df189a36a2b8d7a22e5a26b67fb63a1a2f076b7"},"id":"20221201134618"}</script>
+<script class="next-config" data-name="giteement" type="application/json">{"enable":true,"redirect_uri":"http://jack960330.gitee.io/qhjack-blog","oauth_uri":"https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token","giteeID":"jack960330","repo":"qhjack-blog","gitment_oauth":{"client_id":"3d52edb8108f510eec99a9562e0cef09828e90581baf0e7ff1ac30d92afbabac","client_secret":"236aec6fd09f286d168ec0f70df189a36a2b8d7a22e5a26b67fb63a1a2f076b7"},"id":"20221201133421"}</script>
 <script src="/js/third-party/comments/giteement.js"></script>
 
 
+  
+    
+      
+    
+  
 
 
-<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"jack9603301/qhjack-blog","issue_term":"pathname","theme":"github-light","overlay_comment_option":false,"label":"unknown"}</script>
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"jack9603301/qhjack-blog","issue_term":"pathname","theme":"github-light","overlay_comment_option":false,"label":"linux"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
