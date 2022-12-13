@@ -21,6 +21,7 @@ pretty_urls:
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 abbrlink:
+  force: true
   alg: crc32 #support crc16(default) and crc32
   rep: dec   #support dec(default) and hex
 

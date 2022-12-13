@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/pace-js/themes/blue/pace-theme-minimal.css">
+  <script src="/lib/pace-js/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qhjack.gitee.io","root":"/","images":"/images","scheme":"custom","darkmode":false,"version":"8.11.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":{"utterances":{"order":-1}},"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="我将在Gentoo系统上部署基于WayLand的定制桌面环境">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于gentoo系统部署wayland定制桌面环境">
+<meta property="og:url" content="https://qhjack.gitee.io/blogs/linux/4097776901.html">
+<meta property="og:site_name" content="起航天空">
+<meta property="og:description" content="我将在Gentoo系统上部署基于WayLand的定制桌面环境">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-09T09:16:20.000Z">
+<meta property="article:modified_time" content="2022-12-13T09:31:21.122Z">
+<meta property="article:author" content="杰克">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://qhjack.gitee.io/blogs/linux/4097776901.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://qhjack.gitee.io/blogs/linux/4097776901.html","path":"blogs/linux/4097776901.html","title":"基于gentoo系统部署wayland定制桌面环境"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>基于gentoo系统部署wayland定制桌面环境 | 起航天空</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">起航天空</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-devops"><a href="https://gitee.com/enterprises?invite_code=Z2l0ZWUtMzAxNzA2" rel="noopener" target="_blank">devops</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">开始部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85wayland%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90"><span class="nav-number">2.1.</span> <span class="nav-text">安装wayland基本组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%B9%B6%E9%85%8D%E7%BD%AEHyprland"><span class="nav-number">2.2.</span> <span class="nav-text">安装并配置Hyprland</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85waybar"><span class="nav-number">2.3.</span> <span class="nav-text">安装waybar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85nerd%E5%AD%97%E4%BD%93"><span class="nav-number">2.4.</span> <span class="nav-text">安装nerd字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85powerline%E5%AD%97%E4%BD%93"><span class="nav-number">2.5.</span> <span class="nav-text">安装powerline字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85fish"><span class="nav-number">2.6.</span> <span class="nav-text">安装fish</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.7.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85pipewire"><span class="nav-number">2.8.</span> <span class="nav-text">安装pipewire</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85bluetooth"><span class="nav-number">2.9.</span> <span class="nav-text">安装bluetooth</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">启动Hyprland</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">杰克</p>
+  <div class="site-description" itemprop="description">在茫茫之中，探索自然奥秘，在星星之源，绽放声明之花。起航天空，引领你的未来，配棒你的一生！</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jack9603301" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jack9603301" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiebruce.top/" title="https:&#x2F;&#x2F;www.xiebruce.top" rel="noopener" target="_blank">Bruce's Blog</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://qhjack.gitee.io/blogs/linux/4097776901.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="杰克">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="起航天空">
+      <meta itemprop="description" content="在茫茫之中，探索自然奥秘，在星星之源，绽放声明之花。起航天空，引领你的未来，配棒你的一生！">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基于gentoo系统部署wayland定制桌面环境 | 起航天空">
+      <meta itemprop="description" content="我将在Gentoo系统上部署基于WayLand的定制桌面环境">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于gentoo系统部署wayland定制桌面环境
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-09 17:16:20" itemprop="dateCreated datePublished" datetime="2022-12-09T17:16:20+08:00">2022-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-13 17:31:21" itemprop="dateModified" datetime="2022-12-13T17:31:21+08:00">2022-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">我将在Gentoo系统上部署基于WayLand的定制桌面环境</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1>背景</h1>
+<p>最近，我决定第二次重新尝试Wayland桌面布局，再加上我的系统实在是太乱了，决定重装系统的同时开始考虑自己的桌面系统</p>
+<h1>开始部署</h1>
+<h2 id="安装wayland基本组成">安装wayland基本组成</h2>
+<p>在你 的gentoo的 <code>/etc/portage/make.conf</code>增加如下<em>USE</em>：</p>
+<pre class="line-numbers language-none"><code class="language-none">gles2 wayland xwayland vulkan <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>增加如下 <code>VIDEO_CARDS</code>:</p>
+<pre class="line-numbers language-none"><code class="language-none">intel nvidia<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>增加如下 <code>INPUT_DEVICES</code>：</p>
+<pre class="line-numbers language-none"><code class="language-none">libinput<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>编辑<code>/etc/portage/make.conf</code>：</p>
+<pre class="line-numbers language-none"><code class="language-none">USE&#x3D;&quot;$&#123;USE&#125; waybar gles2 bluetooth screencast wayland xwayland vulkan pipewire &quot;
+
+VIDEO_CARDS&#x3D;&quot;intel nvidia&quot;
+INPUT_DEVICES&#x3D;&quot;libinput&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后执行以下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">emerge --ask --changed-use --newuse --deep --with-bdeps<span class="token operator">=</span>y --update @world
+emerge --ask wayland xwayland vulkan xorg-server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>等待执行完毕即可。</p>
+<h2 id="安装并配置Hyprland">安装并配置Hyprland</h2>
+<p>执行命令拉取：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">eselect repository <span class="token builtin class-name">enable</span> wayland-desktop
+emaint <span class="token function">sync</span> -r wayland-desktop
+emerge --ask --verbose hyprland<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>完成后编辑 <code>.config/hypr/yyprland.conf</code>:</p>
+<pre class="line-numbers language-conf" data-language="conf"><code class="language-conf">########################################################################################
+AUTOGENERATED HYPR CONFIG.
+PLEASE USE THE CONFIG PROVIDED IN THE GIT REPO &#x2F;examples&#x2F;hypr.conf AND EDIT IT,
+OR EDIT THIS ONE ACCORDING TO THE WIKI INSTRUCTIONS.
+########################################################################################
+
+#
+# Please note not all available settings &#x2F; options are set here.
+# For a full list, see the wiki
+#
+
+#autogenerated &#x3D; 1 # remove this line to remove the warning
+
+# See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Monitors&#x2F;
+#monitor&#x3D;,preferred,auto,1
+monitor&#x3D;, 2048x1080@60,0x0,1
+
+# See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Keywords&#x2F; for more
+
+# Execute your favorite apps at launch
+exec-once &#x3D; waybar -c ~&#x2F;.config&#x2F;waybar&#x2F;config.bottom
+exec-once &#x3D; waybar -c ~&#x2F;.config&#x2F;waybar&#x2F;config.top
+exec-once &#x3D; &#x2F;opt&#x2F;upwork-wayland&#x2F;screenshot_adapter.py
+exec-once &#x3D; hyprpaper
+exec-once &#x3D; sleep 10 &amp;&amp; fcitx5
+exec-once &#x3D; gentoo-pipewire-launcher &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1
+exec-once &#x3D; gsettings set org.gnome.desktop.interface gtk-theme &quot;Dexy-GTK&quot;
+exec-once &#x3D; gsettings set org.gnome.desktop.interface icon-theme &quot;Dexy-GTK&quot;
+exec-once &#x3D; gsettings set org.gnome.desktop.interface font-name &quot;SourceSerif4 10&quot;
+exec-once &#x3D; &#x2F;usr&#x2F;libexec&#x2F;xdg-desktop-portal-gtk -r 
+exec-once &#x3D; &#x2F;usr&#x2F;libexec&#x2F;xdg-desktop-portal-wlr -r 
+exec-once &#x3D; &#x2F;usr&#x2F;libexec&#x2F;xdg-desktop-portal -r
+exec-once &#x3D; flameshot
+#exec-once &#x3D; dbus-update-activation-environment 2&gt;&#x2F;dev&#x2F;null &amp;&amp; dbus-update-activation-environment DISPLAY&#x3D;$DISPLAY WAYLAND_DISPLAY&#x3D;$WAYLAND_DISPLAY SWAYSOCK&#x3D;$SWAYSOCK
+#exec-once &#x3D; XDG_CURRENT_DESKTOP&#x3D;sway flameshot &amp;
+
+# Source a file (multi-file configs)
+# source &#x3D; ~&#x2F;.config&#x2F;hypr&#x2F;myColors.conf
+
+&quot;wlr&#x2F;workspaces&quot;: &#123;
+    &quot;format&quot;: &quot;&#123;icon&#125;&quot;,
+    &quot;on-scroll-up&quot;: &quot;hyprctl dispatch workspace e+1&quot;,
+    &quot;on-scroll-down&quot;: &quot;hyprctl dispatch workspace e-1&quot;,
+    &quot;on-click&quot;: &quot;activate&quot;
+&#125;
+
+# For all categories, see https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Variables&#x2F;
+input &#123;
+    kb_layout &#x3D; us
+    kb_variant &#x3D;
+    kb_model &#x3D;
+    kb_options &#x3D;
+    kb_rules &#x3D;
+
+    follow_mouse &#x3D; 1
+
+    touchpad &#123;
+        natural_scroll &#x3D; no
+    &#125;
+
+    sensitivity &#x3D; 0 # -1.0 - 1.0, 0 means no modification.
+&#125;
+
+general &#123;
+    # See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Variables&#x2F; for more
+
+    gaps_in &#x3D; 5
+    gaps_out &#x3D; 20
+    border_size &#x3D; 2
+    col.active_border &#x3D; rgba(1affffee)
+    col.inactive_border &#x3D; rgba(595959aa)
+
+    layout &#x3D; dwindle
+&#125;
+
+decoration &#123;
+    # See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Variables&#x2F; for more
+
+    rounding &#x3D; 10
+    blur &#x3D; yes
+    blur_size &#x3D; 3
+    blur_passes &#x3D; 1
+    blur_new_optimizations &#x3D; on
+
+    drop_shadow &#x3D; yes
+    shadow_range &#x3D; 4
+    shadow_render_power &#x3D; 3
+    col.shadow &#x3D; rgba(1a1a1aee)
+&#125;
+
+animations &#123;
+    enabled &#x3D; yes
+
+    # Some default animations, see https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Animations&#x2F; for more
+
+    bezier &#x3D; myBezier, 0.05, 0.9, 0.1, 1.05
+
+    animation &#x3D; windows, 1, 7, myBezier
+    animation &#x3D; windowsOut, 1, 7, default, popin 80%
+    animation &#x3D; border, 1, 10, default
+    animation &#x3D; fade, 1, 7, default
+    animation &#x3D; workspaces, 1, 6, default
+&#125;
+
+dwindle &#123;
+    # See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Dwindle-Layout&#x2F; for more
+    pseudotile &#x3D; yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+    preserve_split &#x3D; yes # you probably want this
+&#125;
+
+master &#123;
+    # See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Master-Layout&#x2F; for more
+    new_is_master &#x3D; true
+&#125;
+
+gestures &#123;
+    # See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Variables&#x2F; for more
+    workspace_swipe &#x3D; off
+&#125;
+
+# Example per-device config
+# See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Keywords&#x2F;#executing for more
+device:epic mouse V1 &#123;
+    sensitivity &#x3D; -0.5
+&#125;
+
+# Example windowrule v1
+# windowrule &#x3D; float, ^(kitty)$
+# Example windowrule v2
+# windowrulev2 &#x3D; float,class:^(kitty)$,title:^(kitty)$
+# See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Window-Rules&#x2F; for more
+
+windowrule&#x3D;nofocus
+windowrule&#x3D;float,^(rofi)$
+windowrule&#x3D;workspace name:work, title:Upwork
+windowrule&#x3D;workspace name:Telegram, title:Telegram
+windowrule&#x3D;workspace name:work, title:Skype
+# See https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Keywords&#x2F; for more
+$mainMod &#x3D; SUPER
+
+# Example binds, see https:&#x2F;&#x2F;wiki.hyprland.org&#x2F;Configuring&#x2F;Binds&#x2F; for more
+bind &#x3D; $mainMod, Return, exec, konsole
+bind &#x3D; $mainMod, C, killactive, 
+bind &#x3D; $mainMod, M, exit,
+bind &#x3D; $mainMod, F, exec, firefox
+bind &#x3D; $mainMod, Print, exec, flameshot gui
+#bind &#x3D; $mainMod + SHIFT, Print, exec, XDG_CURRENT_DESKTOP&#x3D;sway flameshot gui -r | wl-copy
+bind &#x3D; $mainMod, F2, exec, fcitx5-configtool
+bind &#x3D; $mainMod, T, exec, Telegram
+bind &#x3D; $mainMod, E, exec, dolphin
+bind &#x3D; $mainMod, V, togglefloating, 
+bind &#x3D; $mainMod, R, exec, rofi -show drun
+bind &#x3D; $mainMod + SHIFT, KP_Subtract , exec, fish -c &quot;set_main_mute 5%-&quot;
+bind &#x3D; $mainMod + SHIFT, KP_Add, exec, fish -c &quot;set_main_mute 5%+&quot;
+bind &#x3D; $mainMod, P, pseudo, # dwindle
+bind &#x3D; $mainMod, J, togglesplit, # dwindle
+bind &#x3D; $mainMod, F3, exec, QT_QPA_PLATFORM&#x3D;xcb  Applications&#x2F;Ultimaker-Cura-5.0.0-beta+1-linux_c714ec65293e8f948ace6fd69440b1d4.AppImage
+
+# Move focus with mainMod + arrow keys
+bind &#x3D; $mainMod, left, movefocus, l
+bind &#x3D; $mainMod, right, movefocus, r
+bind &#x3D; $mainMod, up, movefocus, u
+bind &#x3D; $mainMod, down, movefocus, d
+
+bind &#x3D; $mainMod, K, togglegroup,
+bind &#x3D; $mainMod, Tab, changegroupactive, f
+
+# Switch workspaces with mainMod + [0-9]
+bind &#x3D; $mainMod, 1, workspace, 1
+bind &#x3D; $mainMod, 2, workspace, 2
+bind &#x3D; $mainMod, 3, workspace, 3
+bind &#x3D; $mainMod, 4, workspace, 4
+bind &#x3D; $mainMod, 5, workspace, 5
+bind &#x3D; $mainMod, 6, workspace, 6
+bind &#x3D; $mainMod, 7, workspace, 7
+bind &#x3D; $mainMod, 8, workspace, 8
+bind &#x3D; $mainMod, 9, workspace, 9
+bind &#x3D; $mainMod, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+bind &#x3D; $mainMod SHIFT, 1, movetoworkspace, 1
+bind &#x3D; $mainMod SHIFT, 2, movetoworkspace, 2
+bind &#x3D; $mainMod SHIFT, 3, movetoworkspace, 3
+bind &#x3D; $mainMod SHIFT, 4, movetoworkspace, 4
+bind &#x3D; $mainMod SHIFT, 5, movetoworkspace, 5
+bind &#x3D; $mainMod SHIFT, 6, movetoworkspace, 6
+bind &#x3D; $mainMod SHIFT, 7, movetoworkspace, 7
+bind &#x3D; $mainMod SHIFT, 8, movetoworkspace, 8
+bind &#x3D; $mainMod SHIFT, 9, movetoworkspace, 9
+bind &#x3D; $mainMod SHIFT, 0, movetoworkspace, 10
+
+# Scroll through existing workspaces with mainMod + scroll
+bind &#x3D; $mainMod, mouse_down, workspace, e+1
+bind &#x3D; $mainMod, mouse_up, workspace, e-1
+
+# Move&#x2F;resize windows with mainMod + LMB&#x2F;RMB and dragging
+bindm &#x3D; $mainMod, mouse:272, movewindow
+bindm &#x3D; $mainMod, mouse:273, resizewindow
+
+bind &#x3D; $mainMod, F11, movetoworkspace, special
+bind &#x3D; $mainMod, F12, togglespecialworkspace<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>配置文件已经过修改，按照自己情况即可</strong></p>
+<h2 id="安装waybar">安装waybar</h2>
+<p>编辑<code>/etc/portage/package.use/base</code>：</p>
+<pre class="line-numbers language-none"><code class="language-none">gui-apps&#x2F;waybar experimental wifi tray<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在您的系统执行：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo emerge --ask waybar
+sudo cp -r &#x2F;etc&#x2F;sway ~&#x2F;.config&#x2F;sway<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>编辑配置文件 <code>.config/waybar/config.top</code>:</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+    &quot;layer&quot;: &quot;top&quot;, &#x2F;&#x2F; Waybar at top layer
+    &quot;position&quot;: &quot;top&quot;, &#x2F;&#x2F; Waybar position (top|bottom|left|right)
+    &quot;height&quot;: 30, &#x2F;&#x2F; Waybar height (to be removed for auto height)
+    &#x2F;&#x2F; &quot;width&quot;: 1280, &#x2F;&#x2F; Waybar width
+    &quot;spacing&quot;: 4, &#x2F;&#x2F; Gaps between modules (4px)
+    &#x2F;&#x2F; Choose the order of the modules
+    &quot;modules-left&quot;: [], 
+    &quot;modules-center&quot;: [&quot;hyprland&#x2F;window&quot;],
+    &quot;modules-right&quot;: [], 
+    &quot;hyprland&#x2F;window&quot;: &#123;
+        &quot;format&quot;: &quot;  &#123;&#125;&quot;,                                                                                                                                                                                                                      
+        &quot;separate-outputs&quot;: true
+    &#125;,  
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>配置文件经过修改</p>
+<p>编辑配置文件 <code>.config/waybar/config.top</code>:</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+    &quot;layer&quot;: &quot;top&quot;, 
+    &quot;position&quot;: &quot;bottom&quot;,
+    &quot;height&quot;: 30,
+    &quot;spacing&quot;: 4,
+    &#x2F;&#x2F; Choose the order of the modules
+    &quot;modules-left&quot;: [&quot;wlr&#x2F;workspaces&quot;],
+    &quot;modules-center&quot;: [],
+    &quot;modules-right&quot;: [&quot;custom&#x2F;login&quot;,  &quot;custom&#x2F;pipewire&quot;, &quot;cpu&quot;, &quot;memory&quot;, &quot;temperature&quot;, &quot;backlight&quot;, &quot;clock&quot;, &quot;tray&quot;],
+    &#x2F;&#x2F; Modules configuration
+    &#x2F;&#x2F;&quot;wlr&#x2F;workspaces&quot;: &#123;
+    &#x2F;&#x2F;    &quot;disable-scroll&quot;: true,
+    &#x2F;&#x2F;    &quot;all-outputs&quot;: true,
+    &#x2F;&#x2F;    &quot;format&quot;: &quot;&#123;name&#125;: &#123;icon&#125;&quot;,
+    &#x2F;&#x2F;    &quot;format-icons&quot;: &#123;
+    &#x2F;&#x2F;        &quot;1&quot;: &quot;&quot;,
+    &#x2F;&#x2F;        &quot;2&quot;: &quot;&quot;,
+    &#x2F;&#x2F;        &quot;3&quot;: &quot;&quot;,
+    &#x2F;&#x2F;        &quot;4&quot;: &quot;&quot;,
+    &#x2F;&#x2F;        &quot;5&quot;: &quot;&quot;,
+    &#x2F;&#x2F;        &quot;urgent&quot;: &quot;&quot;,
+    &#x2F;&#x2F;        &quot;focused&quot;: &quot;&quot;,
+    &#x2F;&#x2F;        &quot;default&quot;: &quot;&quot;
+    &#x2F;&#x2F;    &#125;
+    &#x2F;&#x2F;&#125;,
+    &quot;custom&#x2F;login&quot;: &#123;
+        &quot;exec&quot;: &quot;.config&#x2F;waybar&#x2F;login.fish&quot;,
+        &quot;interval&quot;: &quot;once&quot;,
+        &quot;singal&quot;: 9,
+        &quot;return-type&quot;: &quot;text&quot;
+    &#125;,
+
+    &quot;custom&#x2F;pipewire&quot;: &#123;
+        &quot;exec&quot;: &quot;pw-volume status&quot;,
+        &quot;return-type&quot;: &quot;json&quot;,
+        &quot;interval&quot;: 2,
+        &quot;signal&quot;: 8,
+        &quot;format&quot;: &quot; &#123;icon&#125;  &#123;percentage&#125;% &quot;,
+        &quot;format-icons&quot;: &#123;
+            &quot;mute&quot;: &quot;&quot;,
+            &quot;default&quot;: [&quot;&quot;, &quot;&quot;, &quot;&quot;]
+        &#125;
+    &#125;,
+    &quot;tray&quot;: &#123;
+        &#x2F;&#x2F; &quot;icon-size&quot;: 21,
+        &quot;spacing&quot;: 10,
+        &quot;interval&quot;: 2
+    &#125;,
+    &quot;clock&quot;: &#123;
+        &#x2F;&#x2F; &quot;timezone&quot;: &quot;America&#x2F;New_York&quot;,
+        &quot;tooltip-format&quot;: &quot;&lt;big&gt;&#123;:%Y %B&#125;&lt;&#x2F;big&gt;\n&lt;tt&gt;&lt;small&gt;&#123;calendar&#125;&lt;&#x2F;small&gt;&lt;&#x2F;tt&gt;&quot;,
+        &quot;format-alt&quot;: &quot;&#123;:%Y-%m-%d&#125;&quot;
+    &#125;,
+    &quot;cpu&quot;: &#123;
+        &quot;format&quot;: &quot;&#123;usage&#125;% &quot;,
+        &quot;tooltip&quot;: false
+    &#125;,
+    &quot;memory&quot;: &#123;
+        &quot;format&quot;: &quot;&#123;&#125;% &quot;
+    &#125;,
+    &quot;temperature&quot;: &#123;
+        &#x2F;&#x2F; &quot;thermal-zone&quot;: 2,
+        &#x2F;&#x2F; &quot;hwmon-path&quot;: &quot;&#x2F;sys&#x2F;class&#x2F;hwmon&#x2F;hwmon2&#x2F;temp1_input&quot;,
+        &quot;critical-threshold&quot;: 80,
+        &#x2F;&#x2F; &quot;format-critical&quot;: &quot;&#123;temperatureC&#125;°C &#123;icon&#125;&quot;,
+        &quot;format&quot;: &quot;&#123;temperatureC&#125;°C &#123;icon&#125;&quot;,
+        &quot;format-icons&quot;: [&quot;&quot;, &quot;&quot;, &quot;&quot;]
+    &#125;,
+    &quot;backlight&quot;: &#123;
+        &#x2F;&#x2F; &quot;device&quot;: &quot;acpi_video1&quot;,
+        &quot;format&quot;: &quot;&#123;percent&#125;% &#123;icon&#125;&quot;,
+        &quot;format-icons&quot;: [&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;]
+    &#125;
+&#125;
+&#123;
+    &quot;layer&quot;: &quot;top&quot;, &#x2F;&#x2F; Waybar at top layer
+    &quot;position&quot;: &quot;top&quot;, &#x2F;&#x2F; Waybar position (top|bottom|left|right)
+    &quot;height&quot;: 30, &#x2F;&#x2F; Waybar height (to be removed for auto height)
+    &#x2F;&#x2F; &quot;width&quot;: 1280, &#x2F;&#x2F; Waybar width
+    &quot;spacing&quot;: 4, &#x2F;&#x2F; Gaps between modules (4px)
+    &#x2F;&#x2F; Choose the order of the modules
+    &quot;modules-left&quot;: [],
+    &quot;modules-center&quot;: [&quot;hyprland&#x2F;window&quot;],
+    &quot;modules-right&quot;: [],
+    &quot;hyprland&#x2F;window&quot;: &#123;
+        &quot;format&quot;: &quot;👉 &#123;&#125;&quot;,
+        &quot;separate-outputs&quot;: true
+    &#125;,
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改 <code>.config/waybar/style.css</code>:</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">#custom-pipewire</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #66ccff<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #000000<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token selector">#workspaces button.active</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #64727D<span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> inset 0 -3px #ffffff<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="安装nerd字体">安装nerd字体</h2>
+<p>有两种方法：</p>
+<ol>
+<li class="lvl-3">
+<p>从 <code>portage</code>中安装：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo emerge --ask nerd-fonts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li class="lvl-3">
+<p>手动安装</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/ryanoasis/nerd-fonts --depth <span class="token number">1</span>
+<span class="token builtin class-name">cd</span> nerd-fonts
+<span class="token function">sudo</span> ./install.sh -S <span class="token comment"># 将字体安装到系统，默认是用户路径，推荐加-S</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="安装powerline字体">安装powerline字体</h2>
+<p>执行如下命令安装：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo emerge --ask powerline-symbols
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="安装fish">安装fish</h2>
+<p>执行如下指令安装fish：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> emerge --ask fish<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>现在我们需要安装 <code>oh-my-fish</code>：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install <span class="token operator">|</span> fish<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>安装 <code>bobthefish</code>主题：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">omf <span class="token function">install</span> bobthefish<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>编辑<code>.config/fish/config.fish</code>:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> status is-interactive
+    <span class="token comment"># Commands to run in interactive sessions can go here</span>
+    <span class="token builtin class-name">set</span> -g theme_display_git <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_git_dirty <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_git_untracked <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_git_ahead_verbose <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_git_dirty_verbose <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_git_stashed_verbose <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_git_default_branch <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_git_default_branches master main
+    <span class="token builtin class-name">set</span> -g theme_git_worktree_support no
+    <span class="token builtin class-name">set</span> -g theme_use_abbreviated_branch_name no
+    <span class="token builtin class-name">set</span> -g theme_display_vagrant <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_docker_machine <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_k8s_context <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_hg <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_virtualenv <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_nix <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_ruby <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_node <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_user <span class="token function">ssh</span>
+    <span class="token builtin class-name">set</span> -g theme_display_hostname <span class="token function">ssh</span>
+    <span class="token builtin class-name">set</span> -g theme_display_vi no
+    <span class="token builtin class-name">set</span> -g theme_display_date <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_cmd_duration <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_title_display_process <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_title_display_path <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_title_display_user <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_title_use_abbreviated_path no
+    <span class="token builtin class-name">set</span> -g theme_date_format <span class="token string">"+%a %H:%M"</span>
+    <span class="token builtin class-name">set</span> -g theme_date_timezone Asia/Shanghai
+    <span class="token builtin class-name">set</span> -g theme_avoid_ambiguous_glyphs <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_powerline_fonts <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_nerd_fonts <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_show_exit_status <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_display_jobs_verbose <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g default_user jack
+    <span class="token comment">#set -g theme_color_scheme agnoster</span>
+    <span class="token builtin class-name">set</span> -g fish_prompt_pwd_dir_length <span class="token number">0</span>
+    <span class="token builtin class-name">set</span> -g theme_project_dir_length <span class="token number">0</span>
+    <span class="token builtin class-name">set</span> -g theme_newline_cursor <span class="token function">yes</span>
+    <span class="token builtin class-name">set</span> -g theme_newline_prompt <span class="token string">'$ '</span>
+    <span class="token comment"># fish color theme</span>
+    <span class="token builtin class-name">set</span> -g fish_color_normal normal
+    <span class="token builtin class-name">set</span> -g fish_color_command 00BF32
+    <span class="token builtin class-name">set</span> -g fish_color_quote <span class="token number">206676</span>
+    <span class="token builtin class-name">set</span> -g fish_color_redirection 7CB02C
+    <span class="token builtin class-name">set</span> -g fish_color_end 8EEB00
+    <span class="token builtin class-name">set</span> -g fish_color_error 60B9CE
+    <span class="token builtin class-name">set</span> -g fish_color_param 04819E
+    <span class="token builtin class-name">set</span> -g fish_color_comment 5C9900
+    <span class="token builtin class-name">set</span> -g fish_color_match --background<span class="token operator">=</span>brblue
+    <span class="token builtin class-name">set</span> -g fish_color_selection white --bold --background<span class="token operator">=</span>brblack
+    <span class="token builtin class-name">set</span> -g fish_color_search_match bryellow --background<span class="token operator">=</span>brblack
+    <span class="token builtin class-name">set</span> -g fish_color_history_current --bold
+    <span class="token builtin class-name">set</span> -g fish_color_operator 00a6b2
+    <span class="token builtin class-name">set</span> -g fish_color_escape 00a6b2
+    <span class="token builtin class-name">set</span> -g fish_color_cwd green
+    <span class="token builtin class-name">set</span> -g fish_color_cwd_root red
+    <span class="token builtin class-name">set</span> -g fish_color_valid_path --underline
+    <span class="token builtin class-name">set</span> -g fish_color_autosuggestion 64DF85
+    <span class="token builtin class-name">set</span> -g fish_color_user brgreen
+    <span class="token builtin class-name">set</span> -g fish_color_host normal
+    <span class="token builtin class-name">set</span> -g fish_color_cancel --reverse
+    <span class="token builtin class-name">set</span> -g fish_pager_color_prefix normal --bold --underline
+    <span class="token builtin class-name">set</span> -g fish_pager_color_progress brwhite --background<span class="token operator">=</span>cyan
+    <span class="token builtin class-name">set</span> -g fish_pager_color_completion normal
+    <span class="token builtin class-name">set</span> -g fish_pager_color_description B3A06D
+    <span class="token builtin class-name">set</span> -g fish_pager_color_selected_background --background<span class="token operator">=</span>brblack
+    <span class="token builtin class-name">set</span> -g fish_pager_color_background 
+    <span class="token builtin class-name">set</span> -g fish_color_host_remote 
+    <span class="token builtin class-name">set</span> -g fish_color_keyword 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_selected_prefix 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_secondary_description 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_secondary_completion 
+    <span class="token builtin class-name">set</span> -g fish_color_option 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_secondary_background 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_secondary_prefix 
+    <span class="token comment"># Colorscheme: Seaweed</span>
+    <span class="token builtin class-name">set</span> -g fish_color_normal normal
+    <span class="token builtin class-name">set</span> -g fish_pager_color_selected_description 
+    <span class="token builtin class-name">set</span> -g fish_color_command 00BF32
+    <span class="token builtin class-name">set</span> -g fish_pager_color_selected_completion 
+    <span class="token builtin class-name">set</span> -g fish_color_quote <span class="token number">206676</span>
+    <span class="token builtin class-name">set</span> -g fish_color_redirection 7CB02C
+    <span class="token builtin class-name">set</span> -g fish_color_end 8EEB00
+    <span class="token builtin class-name">set</span> -g fish_color_error 60B9CE
+    <span class="token builtin class-name">set</span> -g fish_color_param 04819E
+    <span class="token builtin class-name">set</span> -g fish_color_comment 5C9900
+    <span class="token builtin class-name">set</span> -g fish_color_match --background<span class="token operator">=</span>brblue
+    <span class="token builtin class-name">set</span> -g fish_color_selection white --bold --background<span class="token operator">=</span>brblack
+    <span class="token builtin class-name">set</span> -g fish_color_search_match bryellow --background<span class="token operator">=</span>brblack
+    <span class="token builtin class-name">set</span> -g fish_color_history_current --bold
+    <span class="token builtin class-name">set</span> -g fish_color_operator 00a6b2
+    <span class="token builtin class-name">set</span> -g fish_color_escape 00a6b2
+    <span class="token builtin class-name">set</span> -g fish_color_cwd green
+    <span class="token builtin class-name">set</span> -g fish_color_cwd_root red
+    <span class="token builtin class-name">set</span> -g fish_color_valid_path --underline
+    <span class="token builtin class-name">set</span> -g fish_color_autosuggestion 64DF85
+    <span class="token builtin class-name">set</span> -g fish_color_user brgreen
+    <span class="token builtin class-name">set</span> -g fish_color_host normal
+    <span class="token builtin class-name">set</span> -g fish_color_cancel --reverse
+    <span class="token builtin class-name">set</span> -g fish_pager_color_prefix normal --bold --underline
+    <span class="token builtin class-name">set</span> -g fish_pager_color_progress brwhite --background<span class="token operator">=</span>cyan
+    <span class="token builtin class-name">set</span> -g fish_pager_color_completion normal
+    <span class="token builtin class-name">set</span> -g fish_pager_color_description B3A06D
+    <span class="token builtin class-name">set</span> -g fish_pager_color_selected_background --background<span class="token operator">=</span>brblack
+    <span class="token builtin class-name">set</span> -g fish_pager_color_background 
+    <span class="token builtin class-name">set</span> -g fish_color_host_remote 
+    <span class="token builtin class-name">set</span> -g fish_color_keyword 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_selected_prefix 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_secondary_description 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_secondary_completion 
+    <span class="token builtin class-name">set</span> -g fish_color_option 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_secondary_background 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_secondary_prefix 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_selected_description 
+    <span class="token builtin class-name">set</span> -g fish_pager_color_selected_completion
+    <span class="token comment"># custom abbr</span>
+    abbr ll <span class="token function">ls</span> -l
+    abbr <span class="token function">rm</span> <span class="token function">rm</span> -I
+    abbr rmi <span class="token function">rm</span> -i
+    abbr <span class="token function">dd</span> <span class="token function">dd</span> <span class="token assign-left variable">status</span><span class="token operator">=</span>progress 
+    abbr <span class="token function">tar</span> <span class="token function">tar</span> xvf
+    abbr <span class="token function">rmdir</span> <span class="token function">rm</span> -I -r 
+    abbr start_wayland dbus-launch --exit-with-session Hyprland
+    abbr get_workspaces hyprctl workspaces
+    abbr switch_workspace hyprctl dispatch workspace 
+    switch <span class="token punctuation">(</span>random <span class="token number">0</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">case</span> <span class="token number">0</span>
+            cpufetch
+        <span class="token keyword">case</span> <span class="token number">1</span>
+            hyfetch
+    end
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>配置<code>.config/fish/functions/bobthefish_colors.fish</code>：</p>
+<pre class="line-numbers language-fish" data-language="fish"><code class="language-fish">function bobthefish_colors --description &#39;My Color&#39; --no-scope-shadowing
+    set -l grey   808080 616161 595959 424242
+    set -l red    FF4050 F0524F B82421 772E2C
+    set -l green  4FC414 5C962C 458500 39511F
+    set -l yellow E5BF00 A68A0D A87B00 5C4F17
+    set -l blue   1FB0FF 3993D4 1778BD 245980
+    set -l white  F9F9F4 B7C3D0
+      
+    set -x color_initial_segment_exit     $white[2] $red[3] --bold
+    set -x color_initial_segment_private  $white[2] $grey[4]
+    set -x color_initial_segment_su       $white[2] $green[3] --bold
+    set -x color_initial_segment_jobs     $white[2] $blue[3] --bold
+      
+    set -x color_path                     $blue[4] $white[2] 
+    set -x color_path_basename            $blue[4] $white[1] --bold
+    set -x color_path_nowrite             $blue[4] $red[2] 
+    set -x color_path_nowrite_basename    $blue[4] $red[1] --bold
+      
+    set -x color_repo                     $green[3] $white[2] --bold
+    set -x color_repo_work_tree           $grey[4] $grey[4] --bold
+    set -x color_repo_dirty               $red[3] $grey[4]
+    set -x color_repo_staged              $yellow[3] $grey[4]
+      
+    set -x color_vi_mode_default          $grey[4] $yellow[2] --bold
+    set -x color_vi_mode_insert           $green[2] $grey[4] --bold
+    set -x color_vi_mode_visual           $yellow[2] $grey[4] --bold
+      
+    set -x color_vagrant                  $blue[2] $green[1] --bold
+    set -x color_k8s                      $green[2] $grey[4] --bold
+    set -x color_aws_vault                $blue[2] $grey[4] --bold
+    set -x color_aws_vault_expired        $blue[2] $red[1] --bold
+    set -x color_username                 $grey[4] $blue[2] --bold
+    set -x color_hostname                 $grey[4] $blue[1]
+    set -x color_rvm                      $red[2] $grey[4] --bold
+    set -x color_node                     $green[3] $white[2] --bold
+    set -x color_virtualfish               $blue[2] $grey[4] --bold
+    set -x color_virtualgo                $blue[2] $grey[4] --bold
+    set -x color_desk                     $blue[2] $grey[4] --bold
+    set -x color_nix                      $blue[2] $grey[4] --bold
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>编辑<code>.config/fish/functions/set_main_mute.fish</code>:</p>
+<pre class="line-numbers language-fish" data-language="fish"><code class="language-fish">function set_main_mute
+    amixer sset Master $argv[1] unmute
+    pkill -RTMIN+8 waybar
+end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="设置环境变量">设置环境变量</h2>
+<p>编辑<code>/etc/environment</code>：</p>
+<pre class="line-numbers language-none"><code class="language-none">WLR_RENDERER&#x3D;vulkan
+XDG_SESSION_TYPE&#x3D;wayland
+QT_QPA_PLATFORM&#x3D;wayland
+QT_QPA_PLATFORMTHEME&#x3D;qt5ct
+#QT_STYLE_OVERRIDE&#x3D;kvantum
+#WLR_DRM_DEVICES&#x3D;&#x2F;dev&#x2F;dri&#x2F;card1
+MOZ_ENABLE_WAYLAND&#x3D;1
+MOZ_USE_XINPUT2&#x3D;1
+# input
+INPUT_METHOD&#x3D;fcitx5
+XIM&#x3D;fcitx5
+XMODIFIERS&#x3D;&quot;@im&#x3D;xim&quot;
+GTK_IM_MODULE&#x3D;&quot;fcitx5&quot;
+QT_IM_MODULE&#x3D;&quot;fcitx5&quot;
+#GBM_BACKEND&#x3D;nvidia-drm
+#__GLX_VENDOR_LIBRARY_NAME&#x3D;nvidia
+
+# Flameshot
+
+SDL_VIDEODRIVER&#x3D;wayland
+_JAVA_AWT_WM_NONREPARENTING&#x3D;1
+XDG_CURRENT_DESKTOP&#x3D;sway
+LD_LIBRARY_PATH&#x3D;&#x2F;opt&#x2F;cuda&#x2F;lib64&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="安装pipewire">安装<code>pipewire</code></h2>
+<p>编辑<code>/etc/portage/package.use/base</code>：</p>
+<pre class="line-numbers language-none"><code class="language-none">media-video&#x2F;pipewire extra echo-cancel pipewire-alsa sound-server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>执行如下命令：</p>
+<pre class="line-numbers language-none"><code class="language-none">sudo emerge --ask pipewire<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="安装bluetooth">安装bluetooth</h2>
+<p>执行如下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> emerge --ask bluez-alsa
+<span class="token function">sudo</span> emerge --ask xdg-desktop-portal
+<span class="token function">sudo</span> emerge --ask xdg-desktop-portal-wlr
+<span class="token function">sudo</span> emerge --ask xdg-desktop-portal-gtk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>设置开机启动：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> rc-update <span class="token function">add</span> bluetooth default<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1>启动Hyprland</h1>
+<p>编辑<code>/etc/portage/package.use/base</code>：</p>
+<pre class="line-numbers language-none"><code class="language-none">sys-auth&#x2F;seatd server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>执行以下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dbus-launch --exit-with-session Hyprland<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>或者：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Hyprland<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>或者：</p>
+<pre class="line-numbers language-fish" data-language="fish"><code class="language-fish">start_wayland<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>杰克
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://qhjack.gitee.io/blogs/linux/4097776901.html" title="基于gentoo系统部署wayland定制桌面环境">https://qhjack.gitee.io/blogs/linux/4097776901.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本文章为原创文章，采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blogs/linux/3117127320.html" rel="prev" title="故障：修复nvidia切换tty后提示重置">
+                  <i class="fa fa-chevron-left"></i> 故障：修复nvidia切换tty后提示重置
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-utterances">utterances</a></li>
+            <li class="tab"><a href="#comment-giteement">giteement</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane utterances" id="comment-utterances">
+              <div class="comments utterances-container"></div>
+            </div>
+            <div class="tab-pane giteement" id="comment-giteement">
+              <div class="comments giteement-container"></div>
+            </div>
+        </div>
+      </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杰克</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/custom/" rel="noopener" target="_blank">NexT.custom</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/ribbon.js/dist/ribbon.min.js"></script>
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="/lib/@next-theme/pjax/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="/lib/jquery/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="/lib/@fancyapps/fancybox/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="/lib/medium-zoom/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="/lib/lozad/dist/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="/lib/pangu/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"/lib/pdfobject/pdfobject.min.js","integrity":"sha256-ph3Dk89VmuTVXG6x/RDzk53SU9LPdAh1tpv0UvnDZ2I="},"url":"/lib/pdf/web/viewer.html"}</script>
+  <script src="/js/third-party/tags/pdf.js"></script>
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"/lib/mermaid/dist/mermaid.min.js","integrity":"sha256-CemUs9ITT7liCZpVMktcEw0BpAOZ1+mujlMB3UyuImU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"/lib/mathjax/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="/lib/quicklink/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://qhjack.gitee.io/blogs/linux/4097776901.html"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+  <link rel="stylesheet" href="https://giteement.oss-cn-beijing.aliyuncs.com/default.css"/>
+
+<script class="next-config" data-name="giteement" type="application/json">{"enable":true,"redirect_uri":"http://jack960330.gitee.io/qhjack-blog","oauth_uri":"https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token","giteeID":"jack960330","repo":"qhjack-blog","gitment_oauth":{"client_id":"3d52edb8108f510eec99a9562e0cef09828e90581baf0e7ff1ac30d92afbabac","client_secret":"236aec6fd09f286d168ec0f70df189a36a2b8d7a22e5a26b67fb63a1a2f076b7"},"id":"20221209171620"}</script>
+<script src="/js/third-party/comments/giteement.js"></script>
+
+
+  
+    
+      
+    
+  
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"jack9603301/qhjack-blog","issue_term":"pathname","theme":"github-light","overlay_comment_option":false,"label":"linux"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
