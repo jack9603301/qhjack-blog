@@ -102,7 +102,6 @@ menu:
   archives: /archives/ || fa fa-archive
   #schedule: /schedule/ || fa fa-calendar
   sitemap: /sitemap.xml || fa fa-sitemap
-  devops: https://gitee.com/enterprises?invite_code=Z2l0ZWUtMzAxNzA2
   commonweal: /404/ || fa fa-heartbeat
 
 # Enable / Disable menu icons / item badges.
@@ -648,14 +647,14 @@ utterances:
   theme: github-light
 
 giteement:
-  enable: true
-  redirect_uri: http://jack960330.gitee.io/qhjack-blog
-  oauth_uri: https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token
-  giteeID: jack960330
-  repo: qhjack-blog
-  gitment_oauth:
-    client_id: 3d52edb8108f510eec99a9562e0cef09828e90581baf0e7ff1ac30d92afbabac
-    client_secret: 236aec6fd09f286d168ec0f70df189a36a2b8d7a22e5a26b67fb63a1a2f076b7
+  enable: false
+#  redirect_uri: http://jack960330.gitee.io/qhjack-blog
+#  oauth_uri: https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token
+#  giteeID: jack960330
+#  repo: qhjack-blog
+#  gitment_oauth:
+#    client_id: 3d52edb8108f510eec99a9562e0cef09828e90581baf0e7ff1ac30d92afbabac
+#    client_secret: 236aec6fd09f286d168ec0f70df189a36a2b8d7a22e5a26b67fb63a1a2f076b7
 
 # Isso
 # For more information: https://posativ.org/isso/

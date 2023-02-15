@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://www.qhjack.top
+url: https://direct.qhjack.top/
 permalink: blogs/:category/:abbrlink.html
 permalink_defaults:
 pretty_urls:
@@ -106,9 +106,9 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repo: https://gitee.com/jack960330/qhjack-blog
+#deploy:
+#  type: git
+#  repo: https://gitee.com/jack960330/qhjack-blog
 
 search:
   path: search.xml
