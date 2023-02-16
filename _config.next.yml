@@ -660,6 +660,21 @@ giteement:
 # For more information: https://posativ.org/isso/
 isso: # <data_isso>
 
+waline:
+  enable: true
+  serverURL: https://www.qhjack.top/waline
+  locale:
+    placeholder: 疑义相与析，畅所欲言，不登录也没关系哒
+  avatar: mm
+  meta: [nick,mail]
+  pageSize: 10
+  lang: zh-cn
+  visitor: true
+  comment_count: true
+  requiredFields: [nick]
+  libUrl: https://unpkg.com/@waline/client@v2/dist/waline.js
+  login: enable
+
 
 # ---------------------------------------------------------------
 # Post Widgets & Content Sharing Services
