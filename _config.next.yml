@@ -39,37 +39,11 @@ custom_file_path:
 #scheme: Muse
 #scheme: Mist
 #scheme: Pisces
-#scheme: Gemini
-scheme: custom
+scheme: Gemini
+#scheme: custom
 # Dark Mode
-darkmode: false
+darkmode: true
 
-# ---------------------------------------------------------------
-# Sidebar Settings
-# See: https://theme-next.js.org/docs/theme-settings/sidebar
-# ---------------------------------------------------------------
-
-sidebar:
-  # Sidebar Position.
-  position: left
-  #position: right
-
-  # Manual define the sidebar width. If commented, will be default for:
-  # Muse | Mist: 320
-  # Pisces | Gemini: 240
-  #width: 300
-
-  # Sidebar Display (only for Muse | Mist), available values:
-  #  - post    expand on posts automatically. Default.
-  #  - always  expand for all pages automatically.
-  #  - hide    expand only when click on the sidebar toggle icon.
-  #  - remove  totally remove sidebar including sidebar toggle.
-  display: post
-
-  # Sidebar padding in pixels.
-  padding: 18
-  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
-  offset: 12
 
 # ---------------------------------------------------------------
 # Site Information Settings
@@ -389,46 +363,52 @@ theme_color:
 # Override browsers' default behavior.
 body_scrollbar:
   # Place the scrollbar over the content.
-  overlay: false
+  overlay: true
   # Present the scrollbar even if the content is not overflowing.
-  stable: false
+  stable: true
+
+highlight:
+  enable: false
+
+prismjs:
+  enable: true
 
 codeblock:
   # Code Highlight theme
   # All available themes: https://theme-next.js.org/highlight/
   theme:
-    light: default
-    dark: stackoverflow-dark
+    light: github
+    dark: github-dark-dimmed
   prism:
     light: prism
     dark: prism-dark
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Available values: default | flat | mac
-    style:
+    style: mac
 
 back2top:
   enable: true
   # Back to top in sidebar.
-  sidebar: false
+  sidebar: true
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
 # Reading progress bar
 reading_progress:
-  enable: false
+  enable: true
   # Available values: left | right
   start_at: left
   # Available values: top | bottom
   position: top
-  reversed: false
+  reversed: true
   color: "#37c6c0"
   height: 3px
 
 # Bookmark Support
 bookmark:
-  enable: false
+  enable: true
   # Customize the color of the bookmark.
   color: "#222"
   # If auto, save the reading progress when closing the page or clicking the bookmark-icon.
@@ -437,9 +417,9 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: false
-  permalink: https://github.com/yourname
-  title: Follow me on GitHub
+  enable:  true
+  permalink: https://github.com/jack9603301
+  title: 关注我的Github
 
 
 # ---------------------------------------------------------------
@@ -702,6 +682,7 @@ waline:
   requiredFields: [nick]
   libUrl: https://unpkg.com/@waline/client@v2/dist/waline.js
   login: enable
+  dark: "auto"
 
 
 # ---------------------------------------------------------------
