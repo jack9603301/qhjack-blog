@@ -22,13 +22,8 @@
     {%- endif %}
   </li>
   <li class="post-copyright-license">
-    {%- if page.copyright_reprint %}
-      <strong>{{ __('post.copyright.license_title') + __('symbol.colon') }} </strong>
-      {{- __('post.copyright.license_content_reprint', next_url(ccURL, ccIcon + ccText)) }}
-    {%- else %}
-      <strong>{{ __('post.copyright.license_title') + __('symbol.colon') }} </strong>
-      {{- __('post.copyright.license_content', next_url(ccURL, ccIcon + ccText)) }}
-    {%- endif %}
+    <strong>{{ __('post.copyright.license_title') + __('symbol.colon') }} </strong>
+    {{- __('post.copyright.license_content', next_url(ccURL, ccIcon + ccText)) }}
   </li>
 </ul>
 </div>

@@ -6,7 +6,7 @@ categories: linux
 comments: true
 copyright_reprint: false
 description: 我将在Gentoo系统上部署基于WayLand的定制桌面环境
-abbrlink: 4097776901
+abbrlink: 4097776920
 date: 2022-12-09 17:16:20
 ---
 # 背景

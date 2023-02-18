@@ -718,7 +718,7 @@ growingio_analytics: # <project_id>
 
 # Cloudflare Web Analytics
 # See: https://www.cloudflare.com/web-analytics/
-cloudflare_analytics: 1e226d24eecf430fa20238b10699e224
+cloudflare_analytics: 
 
 # Microsoft Clarity Analytics
 # See: https://clarity.microsoft.com/
@@ -757,6 +757,10 @@ busuanzi_count:
   post_views: true
   post_views_icon: far fa-eye
 
+umami:
+  enable: true
+  script_url: https://umami.qhjack.top/umami.js
+  website_id: 78475efa-e617-4898-be1f-f5cf0323dd9d
 
 # ---------------------------------------------------------------
 # Search Services

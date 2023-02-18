@@ -1,15 +1,2 @@
-{% set categorie_str = 'unknown' %}
-{% if page.categories and page.categories.length %}
-  {% for categorie in page.categories.toArray() %}
-    {% if categorie_str == 'unknown' %}
-      {% set categorie_str = categorie.name  %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
-
-
-{{ next_data('utterances', theme.utterances, {
-  overlay_comment_option: page.overlay_comment_option if page.overlay_comment_option else false,
-  label: categorie_str
-}) }}
+{{ next_data('utterances', theme.utterances) }}
 {{ next_js('third-party/comments/utterances.js') }}
