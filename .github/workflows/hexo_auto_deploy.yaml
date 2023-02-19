@@ -1,0 +1,38 @@
+name: Hexo automatic deployment
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  hexo_deploy:
+    name: Hexo automatic deployment
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18.14.1
+    - name: Install Node.js Package
+      run: |
+        npm -g install yarn
+        yarn install
+    - name: LXD deployment environment initialization
+      run: |
+        sudo snap install lxd
+        sudo lxd init --auto
+        sudo lxc remote add deploy direct.qhjack.top --password ${{secrets.LXD_PASSWORD}} --accept-certificate
+        sudo lxc remote switch deploy
+    - name: Hexo Deploy
+      run: |
+        yarn global add hexo
+        hexo clean
+        hexo generate
+    - name: clear LXD cache
+      run: |
+        sudo lxc exec qhjack /usr/bin/clean_qhjack_web.fish
+    - name: Upload files to LXD on direct.qhjack.top
+      run: |
+        cp -r public qhjack
+        sudo lxc file push -p -r qhjack qhjack/var/www/
