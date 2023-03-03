@@ -100,6 +100,7 @@ menu:
   tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
+  服务器状态: https://stats.uptimerobot.com/wnNpYcLv03 || fa fa-signal-bars
   颜色对照表: /colors.html || fa fa-palette
   颜色查询: https://eng.m.fontke.com/tool/rgb/ || fa fa-palette
   #schedule: /schedule/ || fa fa-calendar
