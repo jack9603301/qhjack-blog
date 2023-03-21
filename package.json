@@ -12,6 +12,7 @@
     "version": "6.3.0"
   },
   "dependencies": {
+    "@jack9603301/hexo-fisher": "^1.0.8",
     "@waline/hexo-next": "^3.0.1",
     "hexo": "^6.2.0",
     "hexo-abbrlink": "^2.2.1",
