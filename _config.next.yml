@@ -28,7 +28,7 @@ custom_file_path:
   #bodyEnd: source/_data/body-end.njk
   #variable: source/_data/variables.styl
   #mixin: source/_data/mixins.styl
-  #style: source/_data/styles.styl
+  style: blog/_data/styles.styl
 
 
 # ---------------------------------------------------------------
@@ -103,6 +103,7 @@ menu:
   服务器状态: https://stats.uptimerobot.com/wnNpYcLv03 || fa fa-signal-bars
   颜色对照表: /colors.html || fa fa-palette
   颜色查询: https://eng.m.fontke.com/tool/rgb/ || fa fa-palette
+  图床: https://sapicd.qhjack.top/ || fa fa-image
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat

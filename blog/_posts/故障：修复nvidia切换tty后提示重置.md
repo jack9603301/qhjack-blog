@@ -7,7 +7,7 @@ categories: linux
 comments: true
 copyright_reprint: false
 description: 这是一次故障记录
-abbrlink: 3117127336
+abbrlink: 3117127320
 date: 2022-12-01 13:34:21
 ---
 

@@ -8,7 +8,9 @@ author: Xie Bruce
 comments: true
 post_link: 'https://www.xiebruce.top/1811.html'
 copyright_reprint: true
-description: 我之前写过一篇文章：[Mac/Linux下配置iTerm2+zsh+powerline美化终端窗口](https://www.xiebruce.top/590.html)，文章介绍了使用zsh后，使我们敲命令更加的便捷，看上去也更加的美观。
+description: >-
+  我之前写过一篇文章：[Mac/Linux下配置iTerm2+zsh+powerline美化终端窗口](https://www.xiebruce.top/590.html)，文章介绍了使用zsh后，使我们敲命令更加的便捷，看上去也更加的美观。
+abbrlink: 2634740317
 ---
 我之前写过一篇文章：[Mac/Linux下配置iTerm2+zsh+powerline美化终端窗口](https://www.xiebruce.top/590.html)，文章介绍了使用zsh后，使我们敲命令更加的便捷，看上去也更加的美观。
 
