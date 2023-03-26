@@ -187,6 +187,7 @@ links_settings:
 links:
   #Title: https://example.com
   "Bruce's Blog": https://www.xiebruce.top
+  "S9社区": https://s9h.cn
 
 # Table of Contents in the Sidebar
 # Front-matter variable (nonsupport wrap expand_all).
