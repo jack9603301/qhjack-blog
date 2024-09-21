@@ -363,8 +363,8 @@ mobile_layout_economy: false
 
 # Browser header panel color.
 theme_color:
-  light: "#222"
-  dark: "#222"
+  light: "#3e4145"
+  dark: "#7c8577"
 
 # Override browsers' default behavior.
 body_scrollbar:
@@ -416,7 +416,7 @@ reading_progress:
 bookmark:
   enable: true
   # Customize the color of the bookmark.
-  color: "#222"
+  color: "#7c8577"
   # If auto, save the reading progress when closing the page or clicking the bookmark-icon.
   # If manual, only save it by clicking the bookmark-icon.
   save: auto
@@ -424,6 +424,7 @@ bookmark:
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
   enable:  true
+  color: "black"
   permalink: https://github.com/jack9603301
   title: 关注我的Github
 

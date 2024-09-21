@@ -9,7 +9,7 @@ categories: AI
 comments: true
 copyright_reprint: false
 description: 最近GPT的概念火爆，大量的自媒体故意引导流量，大肆吹嘘GPT，那么现在，我们就一起探讨下AI的发展历史，和GPT在其中的角色
-abbrlink: 2076766547
+abbrlink: 2076766741
 date: 2023-05-06 13:20:09
 ---
 

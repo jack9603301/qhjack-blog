@@ -32,6 +32,9 @@ jobs:
     - name: clear LXD cache
       run: |
         sudo lxc exec qhjack /usr/bin/clean_qhjack_web.fish
+    - name: baidu verfiy
+      run: |
+        cp -rfv baidu/* public
     - name: Upload files to LXD on direct.qhjack.top
       run: |
         cp -r public qhjack

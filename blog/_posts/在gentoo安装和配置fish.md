@@ -6,7 +6,7 @@ categories: linux
 comments: true
 copyright_reprint: false
 description: 在这篇文章我们将在gentoo上安装fish，一个非常有意思的shell
-abbrlink: 3509176900
+abbrlink: 3509177094
 date: 2022-11-29 14:40:16
 ---
 

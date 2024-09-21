@@ -7,7 +7,7 @@ author: Xie Bruce
 comments: true
 post_link: 'https://www.xiebruce.top/1811.html'
 copyright_reprint: true
-abbrlink: 516259959
+abbrlink: 516260153
 description: 在Debian中源码编译mysql 8.0.30，整个过程比较详细的解释了一些很多文章没有写，但是很多人又不太懂的知识。
 date: 2022-10-09 23:24:02
 ---
