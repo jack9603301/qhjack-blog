@@ -4,10 +4,11 @@ tags:
   - Devops
   - 运维/OPS
   - kubernetes(k8s)
+categories: Devops
 comments: true
 copyright_reprint: false
 description: 最近在学习k8s，这是笔记
-abbrlink: 3278372884
+abbrlink: 3278372690
 date: 2024-09-21 13:16:21
 ---
 
