@@ -8,7 +8,7 @@ categories: Devops
 comments: true
 copyright_reprint: false
 description: 最近在学习k8s，这是笔记
-abbrlink: 3278372691
+abbrlink: 4084274058
 date: 2024-09-23 13:43:39
 ---
 
