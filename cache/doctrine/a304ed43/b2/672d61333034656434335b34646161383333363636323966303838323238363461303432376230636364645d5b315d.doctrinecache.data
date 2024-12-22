@@ -1,0 +1,40 @@
+1735140686
+a:2:{s:7:"content";s:2385:"<section class="section modular-features offset-box">
+        <section class="container grid-md">
+            <div class="frame-box">
+
+                <h1>Why Work With Me</h1>
+
+                <div class="columns">
+                                   <div class="column col-4 col-md-6 col-sm-12">
+                                            <div class="feature-icon">
+                         <i class="fa fa-fw "></i>
+                                                     <h6>Operational Excellence</h6>
+                                               </div>
+                                            <div class="feature-content">
+                                                  <p>I deliver meticulous and timely operation and maintenance services, ensuring systems consistently perform at their best.</p>
+                                               </div>
+                   </div>
+                                   <div class="column col-4 col-md-6 col-sm-12">
+                                            <div class="feature-icon">
+                         <i class="fa fa-fw "></i>
+                                                     <h6>Deep Expertise</h6>
+                                               </div>
+                                            <div class="feature-content">
+                                                  <p>My comprehensive knowledge in cluster technology, CI/CD, LNMP stacks, and network management enables best-in-class system administration.</p>
+                                               </div>
+                   </div>
+                                   <div class="column col-4 col-md-6 col-sm-12">
+                                            <div class="feature-icon">
+                         <i class="fa fa-fw "></i>
+                                                     <h6>Competitive Edge</h6>
+                                               </div>
+                                            <div class="feature-content">
+                                                  <p>My holistic capabilities in cluster, system maintenance, and network management provide a significant competitive advantage, delivering robust and reliable technical solutions.</p>
+                                               </div>
+                   </div>
+                                </div>
+            </div>
+        </section>
+</section>
+";s:12:"content_meta";N;}

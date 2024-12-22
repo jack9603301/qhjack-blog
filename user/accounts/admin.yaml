@@ -1,0 +1,31 @@
+state: enabled
+email: jack9603301@163.com
+language: zh
+fullname: 'Chunhui Ouyang'
+title: 起航天空
+hashed_password: $2y$10$YHUcG8ivCGaWPIKV7YoaLOh6n74CYc/l0u4muGl3hl3GzHZjlMfJa
+content_editor: default
+twofa_enabled: true
+twofa_secret: TTJPUNZOSZZSLPMKRYO46VMT37W62APM
+avatar:
+  user/accounts/avatars/oig9wuk0yhrnbjo.jpg:
+    name: oig9wuk0yhrnbjo.jpg
+    type: image/jpeg
+    size: 12562
+    path: user/accounts/avatars/oig9wuk0yhrnbjo.jpg
+access:
+  site:
+    login: true
+  admin:
+    login: true
+    super: true
+    cache: true
+    configuration: true
+    pages: true
+    maintenance: true
+    statistics: true
+    plugins: true
+    themes: true
+    tools: true
+    users: true
+    flex-objects: true

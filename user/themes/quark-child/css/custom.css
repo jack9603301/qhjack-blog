@@ -1,0 +1,13 @@
+.text-left {
+	text-align: center;
+}
+
+.post-copyright ul {
+    list-style: none;
+    overflow: hidden;
+    padding: .5em 1em;
+    /* border: dotted; */
+    border-style: dashed;
+    border-color: black;
+    background-color: aqua;
+}

@@ -1,0 +1,4 @@
+1735333805
+a:2:{s:7:"content";s:266:"<h4>Some Text Widget</h4>
+<p>You can <strong>edit</strong> this by modifying the <code>modules/sidebar/default.md</code> page. </p>
+<p>To <strong>reorder</strong> things in the sidebar you need to modify the <code>partials/sidebar.html.twig</code> template file.</p>";s:12:"content_meta";N;}

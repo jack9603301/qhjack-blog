@@ -1,0 +1,58 @@
+1735051233
+a:2:{s:7:"content";s:3578:"<section class="section modular-features small">
+        <section class="container grid-md">
+            <div class="frame-box">
+
+                <h1>Service Offerings</h1>
+
+                <div class="columns">
+                                   <div class="column col-3 col-md-4 col-sm-6">
+                                            <div class="feature-icon">
+                         <i class="fa fa-fw "></i>
+                                                     <h6>System Operations &amp; Maintenance</h6>
+                                               </div>
+                                            <div class="feature-content">
+                                                  <p>Deliver expert maintenance to ensure Linux systems are secure, optimized, and performing at their best.</p>
+                                               </div>
+                   </div>
+                                   <div class="column col-3 col-md-4 col-sm-6">
+                                            <div class="feature-icon">
+                         <i class="fa fa-fw "></i>
+                                                     <h6>Cluster Deployment &amp; Management</h6>
+                                               </div>
+                                            <div class="feature-content">
+                                                  <p>Deploy and manage clusters using LXD/Incus and other advanced technologies, ensuring scalable and resilient infrastructures.</p>
+                                               </div>
+                   </div>
+                                   <div class="column col-3 col-md-4 col-sm-6">
+                                            <div class="feature-icon">
+                         <i class="fa fa-fw "></i>
+                                                     <h6>CI/CD Pipeline Implementation</h6>
+                                               </div>
+                                            <div class="feature-content">
+                                                  <p>Set up and optimize CI/CD pipelines for seamless software integration and deployment.</p>
+                                               </div>
+                   </div>
+                                   <div class="column col-3 col-md-4 col-sm-6">
+                                            <div class="feature-icon">
+                         <i class="fa fa-fw "></i>
+                                                     <h6>LNMP Stack Management</h6>
+                                               </div>
+                                            <div class="feature-content">
+                                                  <p>Manage LNMP stacks to ensure high performance and reliability of web applications.</p>
+                                               </div>
+                   </div>
+                                   <div class="column col-3 col-md-4 col-sm-6">
+                                            <div class="feature-icon">
+                         <i class="fa fa-fw "></i>
+                                                     <h6>Network Optimization</h6>
+                                               </div>
+                                            <div class="feature-content">
+                                                  <p>Strategically manage and optimize networks for effective and high-performance operations.</p>
+                                               </div>
+                   </div>
+                                </div>
+            </div>
+        </section>
+</section>
+";s:12:"content_meta";N;}
