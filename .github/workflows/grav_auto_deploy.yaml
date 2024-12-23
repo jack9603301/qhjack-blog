@@ -1,4 +1,4 @@
-name: Hexo automatic deployment
+name: Grav automatic deployment
 
 on:
   push:
@@ -30,4 +30,4 @@ jobs:
         sudo lxc file push -p -r ../public/qhjack qhjack/var/www/
     - name: Autorun SelfUpgrade
       run: |
-        sudo lxc exec qhjack /var/www/qhjack/bin/auto-upgrade.fish
+        sudo lxc exec qhjack /var/www/qhjack/scripts/auto-upgrade.fish
