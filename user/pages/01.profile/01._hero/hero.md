@@ -35,8 +35,22 @@ Why Work With Me:
 2. Deep Expertise: My comprehensive knowledge in cluster technology, CI/CD, LNMP stacks, and network management enables best-in-class system administration.
 3. Competitive Edge: My holistic capabilities in cluster, system maintenance, and network management provide a significant competitive advantage, delivering robust and reliable technical solutions.
 
+Contact me:
+You can contact me in the following ways:
+1. freelancer: https://www.freelancer.com/u/jack9603301
+2. peopleperhour: https://www.peopleperhour.com/freelancer/technology-programming/chunhui-ouyang-linux-devops-c-c-system-zzzxxjva
+3. Workana: https://www.workana.com/freelancer/de03cc6ac333e650ea52ab8e4dc0670c
+4. guru: https://www.guru.com/freelancers/chunhui-ouyang
+5. truelancer: https://www.truelancer.com/freelancer/ouyangchunhui
+6. freelancehunt: https://freelancehunt.com/freelancer/jack9603301.html
+7. ComeUp: https://comeup.com/en/@jack9603301
+8. Kwork: https://kwork.com/user/jack9603301
+9. Legiit: https://legiit.com/jack9603301
+10. Whatsapp: +8618923117025(Only Whatsapp, Does not support voice/video calls unless you speak Chinese)
+11. Skype: jack9603301@163.com(Does not support voice/video calls unless you speak Chinese)
+12. email: jack9603301@163.com/jack9603301@outlook.com/jack9603301@gmail.com
+13. Telegram: +8618923117025(Only Telegram, Does not support voice/video calls unless you speak Chinese)
 
+It is recommended to give priority to options 1-9, which are my current profile pages for freelancers. If you choose 10-13, although I do not rule out direct wire transfer, I will give priority to 1-6 and use freelancer as the main market and platform.
 
-
-
-
+Please do not send harassing messages or use any other methods other than the authorized contact information. Any direct calls or text messages may be ignored or rejected because I cannot communicate in English by voice or video.
