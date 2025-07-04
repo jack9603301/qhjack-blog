@@ -1,0 +1,26 @@
+---
+title: Linux 手动完全备份技术
+taxonomy:
+	category:
+        - linux
+    tag:
+        - linux
+hero_classes: 'text-dark title-h1h2 overlay-light hero-large parallax'
+hero_image: unsplash-luca-bravo.jpg
+blog_url: /blog
+show_sidebar: false
+show_breadcrumbs: true
+show_pagination: true
+subtitle: 'finding beauty in structure'
+---
+
+在LInux中，有一种特殊的系统备份技术，因为Linux的特殊启动模式和结构，我们可以使用手动方法方便的完成全盘备份，这篇博客就是关于此技术的记录。
+
+===
+
+# Linux 手动完全备份技术
+在LInux中，有一种特殊的系统备份技术，因为Linux的特殊启动模式和结构，我们可以使用手动方法方便的完成全盘备份，这篇博客就是关于此技术的记录。
+
+## 测试操作系统
+
+我们使用此操作系统来进行此技术测试操作：Ubuntu 24.04 LTS
