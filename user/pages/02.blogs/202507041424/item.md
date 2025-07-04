@@ -1,5 +1,6 @@
 ---
 title: Linux 手动完全备份技术
+date: 2025-07-04 18:35:00
 taxonomy:
 	category:
         - linux
@@ -11,7 +12,6 @@ blog_url: /blog
 show_sidebar: false
 show_breadcrumbs: true
 show_pagination: true
-subtitle: 'finding beauty in structure'
 ---
 
 在LInux中，有一种特殊的系统备份技术，因为Linux的特殊启动模式和结构，我们可以使用手动方法方便的完成全盘备份，这篇博客就是关于此技术的记录。
@@ -71,7 +71,7 @@ sector-size: 512
 
 分区表布局
 
-![GPT Layout](./GPTLayouts.png)
+![GPT Layout](GPTLayouts.png)
 
 根据表和`sfdisk`信息，备份gpt起始表
 
@@ -91,6 +91,14 @@ MBR位于磁盘LBA 0的地方，所以命令是：
 
 ```
 dd if=/dev/vda of=mbr.bin skip=0 bs=512 count=1 status=progress
+```
+
+## 备份UEFI分区
+
+UEFI分区一般是磁盘的第一个分区，这里假定是`/dev/vda1`，一般使用`dd`即可备份，因为它的容量不大
+
+```
+dd if=/dev/vda1 of=uefi-vda1.bin status=progress
 ```
 
 ## 完成
