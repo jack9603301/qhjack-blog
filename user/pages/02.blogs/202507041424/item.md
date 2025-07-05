@@ -32,7 +32,7 @@ show_pagination: true
 ```
 mkdir bak
 cd bak
-tar -cvpzf rootfs.tar.gz --hard-dereference --dereference --acls --xattrs --one-file-system --exclude $PWD /
+tar -cvpzf rootfs.tar.gz --hard-dereference --acls --xattrs --one-file-system --exclude $PWD /
 ```
 
 以下是参数表含义:
@@ -60,29 +60,10 @@ sfdisk --dump /dev/vda > gpt_tables.txt
 
 /dev/vda: 这是磁盘分区表所在设备，也就是你的磁盘。
 
-这里有几行重要数据：
-```
-first-lba: 34
-last-lba: 209715166
-sector-size: 512
-```
-
-这为二进制备份提供了帮助
-
-分区表布局
-
-![GPT Layout](GPTLayouts.png)
-
-根据表和`sfdisk`信息，备份gpt起始表
+现在执行二进制备份:
 
 ```
-dd if=/dev/vda of=gpt-first.bin skip=1 bs=512 count=32 status=progress
-```
-
-备份gpt备份表
-
-```
-dd if=/dev/vda of=gpt-second.bin skip=209715168 bs=512 count=32 status=progress
+sfdisk --backup-pt-sectors /dev/vda -O bak
 ```
 
 ## 备份MBR
