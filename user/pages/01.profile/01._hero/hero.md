@@ -46,10 +46,10 @@ You can contact me in the following ways:
 7. ComeUp: https://comeup.com/en/@jack9603301
 8. Kwork: https://kwork.com/user/jack9603301
 9. Legiit: https://legiit.com/jack9603301
-10. Whatsapp: +8618923117025(Only Whatsapp, Does not support voice/video calls unless you speak Chinese)
-11. Skype: jack9603301@163.com(Does not support voice/video calls unless you speak Chinese)
+11. Skype: jack9603301@163.com
 12. email: jack9603301@163.com/jack9603301@outlook.com/jack9603301@gmail.com
-13. Telegram: +8618923117025(Only Telegram, Does not support voice/video calls unless you speak Chinese)
+
+I recommend contacting me via email.
 
 It is recommended to give priority to options 1-9, which are my current profile pages for freelancers. If you choose 10-13, although I do not rule out direct wire transfer, I will give priority to 1-6 and use freelancer as the main market and platform.
 
